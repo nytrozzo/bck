@@ -2,8 +2,8 @@
 MYBACKUPDIR=/backup/$(hostname)/$(date +%Y%m%d)
 sudo mkdir -p ${MYBACKUPDIR}/etc/sysconfig
 sudo cp /etc/origin/master/ca.serial.txt ${MYBACKUPDIR}/
+sudo tar cf ${MYBACKUPDIR}/docker-registry-certs-$(hostname).tar /etc/docker/certs.d/
 sudo cp -aR /etc/origin ${MYBACKUPDIR}/etc
-
 sudo cp -aR /etc/sysconfig/atomic-* ${MYBACKUPDIR}/etc/sysconfig/
 sudo mkdir -p ${MYBACKUPDIR}/etc/pki/ca-trust/source/anchors
 sudo cp -aR /etc/sysconfig/{iptables,docker-*,flanneld} ${MYBACKUPDIR}/etc/sysconfig/
